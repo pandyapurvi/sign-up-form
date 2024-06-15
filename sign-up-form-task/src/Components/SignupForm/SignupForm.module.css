@@ -1,0 +1,18 @@
+.fromContainer {
+	justify-content: center;
+	align-items: center;
+	margin-top: 5rem;
+}
+.formHeader {
+	text-align: center;
+}
+.form {
+	max-width: 33%;
+	margin-top: 5rem;
+	margin: 0 auto;
+}
+.formGroup {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1rem;
+}
