@@ -1,6 +1,7 @@
 export const emailValidator = (email) => {
   if (!email) return 'Email is required';
-  else if (!/\S+@\S+\.\S+/.test(email)) return 'Email is invalid'; // as of now only checking for @ and . in email
+	else if (!/\S+@\S+\.\S+/.test(email)) return 'Email is invalid'; // as of now only checking for @ and . in email
+	return '';
 };
 
 export const passwordValidator = (password) => {

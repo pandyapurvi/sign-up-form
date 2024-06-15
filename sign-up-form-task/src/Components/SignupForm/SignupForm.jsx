@@ -1,27 +1,33 @@
 import React from 'react';
 import styles from './SignupForm.module.css';
+import { useFormValidator } from '../FormValidator/useFormValidator';
 
 export const SignupForm = () => {
   const [form, setForm] = React.useState({
     email: '',
-    name: '',
-    password: '',
-  });
-
+		password: '',
+		confirmPassword: ''
+	});
+	
+	const [isValid, setValid] = React.useState(false);
   const onHandleChange = (e) => {
     const { name, value } = e.target;
     setForm({
       ...form,
       [name]: value,
     });
-    console.log('name', name);
 	};
 
+	const { errors, handleBlur, isFormValidate } = useFormValidator(form);
 
-  const onHandleSubmitForm = (e) => {
-    e.preventDefault();
-    console.log('form', form);
-  };
+	const onHandleSubmitForm = (e) => {
+		e.preventDefault();
+		if (isFormValidate()) {
+			setValid(true)
+		} else {
+			setValid(false)
+		};
+	}
   return (
     <div className={styles.fromContainer}>
       <h1 className={styles.formHeader}>MyWave Sign Up Form</h1>
@@ -36,8 +42,9 @@ export const SignupForm = () => {
             placeholder="Your email address"
             value={form.email}
             onChange={onHandleChange}
-            required
-          />
+						onBlur={() => handleBlur('email')}
+					/>
+					{errors.email ? <p className={styles.error}>{errors.email}</p> : null}
         </div>
         <div className={styles.formGroup}>
           <label className={styles.label}>Password</label>
@@ -48,9 +55,10 @@ export const SignupForm = () => {
             name="password"
             placeholder="Create password"
             value={form.password}
-            onChange={onHandleChange}
-            required
-          />
+						onChange={onHandleChange}
+						onBlur={() => handleBlur('password')}
+					/>
+					{errors.password ? <p className={styles.error}>{errors.password}</p> : null}
         </div>
         <div className={styles.formGroup}>
           <label className={styles.label}>Confirm password</label>
@@ -62,13 +70,15 @@ export const SignupForm = () => {
             placeholder="Confirm password"
             value={form.confirmPassword}
             onChange={onHandleChange}
-            required
-          />
+            onBlur={() => handleBlur('confirmPassword')}
+					/>
+					{errors.confirmPassword ? <p className={styles.error}>{errors.confirmPassword}</p> : null}
         </div>
         <div className={styles.btnContainer}>
           <button type="submit" className={styles.submitBtn}>
             Sign Up
-          </button>
+					</button>
+					{isValid ? <p>Form is submitted</p>: null}
         </div>
       </form>
     </div>
