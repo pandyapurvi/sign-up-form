@@ -10,19 +10,19 @@ describe("SignupForm", () => {
 		expect(screen.getByLabelText('Confirm password field')).toBeInTheDocument();
 		expect(screen.getByRole('button')).toBeInTheDocument();
 	});
-	it("should update the form state when user types", async () => {
+	it("should update the form state when user types", () => {
 		render(<SignupForm />);
 		const emailInput = screen.getByLabelText('Email field');
 		const passwordInput = screen.getByLabelText('Password field');
 		const confirmPasswordInput = screen.getByLabelText('Confirm password field');
-		await fireEvent.change(emailInput, {
+		fireEvent.change(emailInput, {
 			target: { value: 'test12345@gmail.com' }
 		});
-		await fireEvent.change(passwordInput, {
-			target: { value: 'password12345' }
+		fireEvent.change(passwordInput, {
+			target: { value: 'Password@1234' }
 		});
-		await fireEvent.change(confirmPasswordInput, {
-			target: { value: 'password12345' }
+		fireEvent.change(confirmPasswordInput, {
+			target: { value: 'Password@1234' }
 		});
 	})
 })

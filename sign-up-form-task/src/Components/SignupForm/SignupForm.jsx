@@ -15,7 +15,8 @@ export const SignupForm = () => {
       [name]: value,
     });
     console.log('name', name);
-  };
+	};
+
 
   const onHandleSubmitForm = (e) => {
     e.preventDefault();
