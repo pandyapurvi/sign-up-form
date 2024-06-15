@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './SignupForm.module.css';
 import { useFormValidator } from '../FormValidator/useFormValidator';
 
 export const SignupForm = () => {
-  const [form, setForm] = React.useState({
+  const [form, setForm] = useState({
     email: '',
 		password: '',
 		confirmPassword: ''
 	});
 	
-	const [isValid, setValid] = React.useState(false);
+	const [isValid, setValid] = useState(false);
   const onHandleChange = (e) => {
     const { name, value } = e.target;
     setForm({
@@ -44,7 +44,7 @@ export const SignupForm = () => {
             onChange={onHandleChange}
 						onBlur={() => handleBlur('email')}
 					/>
-					{errors.email ? <p className={styles.error}>{errors.email}</p> : null}
+					{errors.email ? <p className={styles.errorMessage}>{errors.email}</p> : null}
         </div>
         <div className={styles.formGroup}>
           <label className={styles.label}>Password</label>
@@ -58,7 +58,7 @@ export const SignupForm = () => {
 						onChange={onHandleChange}
 						onBlur={() => handleBlur('password')}
 					/>
-					{errors.password ? <p className={styles.error}>{errors.password}</p> : null}
+					{errors.password ? <p className={styles.errorMessage}>{errors.password}</p> : null}
         </div>
         <div className={styles.formGroup}>
           <label className={styles.label}>Confirm password</label>
@@ -72,13 +72,13 @@ export const SignupForm = () => {
             onChange={onHandleChange}
             onBlur={() => handleBlur('confirmPassword')}
 					/>
-					{errors.confirmPassword ? <p className={styles.error}>{errors.confirmPassword}</p> : null}
+					{errors.confirmPassword ? <p className={styles.errorMessage}>{errors.confirmPassword}</p> : null}
         </div>
         <div className={styles.btnContainer}>
           <button type="submit" className={styles.submitBtn}>
             Sign Up
 					</button>
-					{isValid ? <p>Form is submitted</p>: null}
+					{isValid ? <p className={styles.submitMessage}>Form is submitted successfully!!</p>: null}
         </div>
       </form>
     </div>

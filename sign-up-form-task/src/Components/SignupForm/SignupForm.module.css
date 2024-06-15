@@ -1,15 +1,19 @@
 .fromContainer {
   justify-content: center;
   align-items: center;
-  margin-top: 5rem;
+	background-image: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%);
+	height: 100vh;
 }
 .formHeader {
   text-align: center;
+	color: white;
 }
 .form {
   max-width: 33%;
-  margin-top: 5rem;
   margin: 0 auto;
+	padding: 2rem;
+	border-radius: 1rem;
+	background-color: rgb(197, 223, 241);
 }
 .formGroup {
   display: flex;
@@ -24,9 +28,14 @@
   padding: 0.5rem;
   font-size: 1rem;
   border-radius: 5rem;
+	padding-left: 1rem;
+}
+.errorMessage {
+  color: #e11d48;
 }
 .btnContainer {
   display: flex;
+	flex-direction: column;
   justify-content: center;
 }
 .submitBtn {
@@ -40,6 +49,13 @@
   border: 1px solid white;
   padding: 1rem 2rem;
   font-weight: 600;
+}
+.submitMessage {
+	text-align: center;
+	margin-top: 1rem;
+	color: rgba(3, 101, 3, 0.695);
+	font-weight: 600;
+	font-style: italic;
 }
 
 /* Responsive styles for the form */
